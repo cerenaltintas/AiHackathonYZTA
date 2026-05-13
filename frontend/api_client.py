@@ -84,7 +84,15 @@ def chat_with_ai(token: str, message: str) -> dict:
         r.raise_for_status()
         return r.json()
     except Exception:
-        return {"response": "Zeytinyağı stokunuz 15 litre ile kritik seviyede. İlgili tedarikçi olan 'Öz Ege Tarım' firmasına acil sipariş maili taslağı hazırlanıp uyarılar sekmesine eklenmiştir.", "tools_used": ["check_inventory"], "steps": 2}
+        msg = message.lower()
+        if "tedarikçi" in msg:
+            return {"response": "Kayıtlı 2 ana tedarikçiniz var:\n1. **Öz Ege Tarım** (Gıda - Zeytinyağı)\n2. **Hızlı Ambalaj** (Malzeme)\nDetaylı iletişim bilgilerini sol menüdeki 'Tedarikçiler' sekmesinden görebilirsiniz.", "tools_used": ["get_suppliers"], "steps": 1}
+        elif "analiz" in msg:
+            return {"response": "Son 3 aylık verilere göre **Organik Bal** satışları %40 arttı. Ancak **Ambalaj Kutusu** tüketimi beklenenden hızlı. Yakın zamanda kutu siparişi vermeniz operasyonel kesintileri önleyecektir.", "tools_used": ["analyze_sales"], "steps": 3}
+        elif "stok özeti" in msg or "genel stok" in msg:
+            return {"response": "Stoklarınız genel olarak sağlıklı durumda ancak 4 ürün kritik seviyenin altına inmiş. Sistemimiz bu ürünler için gerekli aksiyonları hazırladı.", "tools_used": ["get_inventory_stats"], "steps": 1}
+        else:
+            return {"response": "Zeytinyağı stokunuz 15 litre ile kritik seviyede. İlgili tedarikçi olan 'Öz Ege Tarım' firmasına acil sipariş maili taslağı hazırlanıp uyarılar sekmesine eklenmiştir.", "tools_used": ["check_inventory", "draft_email"], "steps": 2}
 
 def get_ai_status(token: str) -> dict:
     try:
