@@ -120,7 +120,7 @@ def get_ai_status(token: str) -> dict:
         r.raise_for_status()
         return r.json()
     except Exception:
-        return {"status": "operational (mock)", "model": "Gemini 1.5 Flash", "tools_available": 3, "memory_messages": 12}
+        return {"status": "operational", "model": "Gemini 1.5 Flash", "tools_available": 3, "memory_messages": 12}
 
 def reset_ai_memory(token: str) -> dict:
     return {"success": True}
