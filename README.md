@@ -1,5 +1,7 @@
 # SME-Flow AI: Otonom İşletme ve Stok Asistanı
 
+> 🏆 **YZTA 5.0 AI Hackathon Projesi** | KOBİ'ler ve Kooperatifler için Yapay Zeka Odaklı Otomasyon Çözümü
+
 SME-Flow AI, KOBİ'ler için geliştirilmiş, **Gemini AI** destekli, otonom bir işletme ve stok yönetimi asistanıdır. Sistem, stok miktarlarını izler, kritik seviyeye inen ürünler için tedarikçilere otomatik e-posta taslakları oluşturur ve şirket sahibinin stoklara dair sorularını doğal dilde (RAG mimarisi ile) yanıtlar.
 
 ## 🚀 Özellikler

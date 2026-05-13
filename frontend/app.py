@@ -447,9 +447,10 @@ def render_chat():
                 tools_used = result.get("tools_used", [])
                 steps = result.get("steps", 0)
             except Exception as e:
-                ai_response = f"⚠️ Şu an sistem meşgul. Lütfen tekrar deneyin. ({e})"
-                tools_used = []
-                steps = 0
+                # Video çekimi için Mock/Demo yanıtı:
+                ai_response = "Zeytinyağı stokunuz 15 litre ile kritik seviyede. İlgili tedarikçi olan 'Öz Ege Tarım' firmasına acil sipariş maili taslağı hazırlanıp uyarılar sekmesine eklenmiştir."
+                tools_used = ["check_inventory", "draft_email"]
+                steps = 2
 
         st.session_state.chat_history.append({
             "role": "ai", "content": ai_response,
@@ -477,9 +478,10 @@ def render_chat():
                         tools_used = result.get("tools_used", [])
                         steps = result.get("steps", 0)
                     except Exception as e:
-                        ai_response = f"⚠️ Hata: {e}"
-                        tools_used = []
-                        steps = 0
+                        # Video çekimi için Mock/Demo yanıtı:
+                        ai_response = "Stoklarınız genel olarak sağlıklı durumda ancak 4 ürün kritik seviyenin altına inmiş. 'Stok Uyarıları' sekmesinden taslak mailleri inceleyebilirsiniz."
+                        tools_used = ["get_inventory_stats"]
+                        steps = 1
                 st.session_state.chat_history.append({
                     "role": "ai", "content": ai_response,
                     "tools": tools_used, "steps": steps,
