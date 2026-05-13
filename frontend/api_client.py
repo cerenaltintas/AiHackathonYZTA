@@ -3,9 +3,19 @@ SME-Flow AI — Backend API İstemcisi
 (Streamlit Community Cloud Demo Sürümü - Backend Yoksa Mock Veri Döndürür)
 """
 import httpx
+import os
+import google.generativeai as genai
 
 BASE_URL = "http://127.0.0.1:8000"
 TIMEOUT = 5.0  # Hızlı fallback için timeout düşürüldü
+
+# Frontend üzerinden doğrudan gerçek Gemini bağlantısı
+GEMINI_KEY = os.getenv("GEMINI_API_KEY", "")
+if GEMINI_KEY:
+    genai.configure(api_key=GEMINI_KEY)
+    gemini_model = genai.GenerativeModel('gemini-1.5-flash')
+else:
+    gemini_model = None
 
 def login(username: str, password: str) -> dict:
     try:
@@ -84,6 +94,16 @@ def chat_with_ai(token: str, message: str) -> dict:
         r.raise_for_status()
         return r.json()
     except Exception:
+        # Gerçek Yapay Zeka (Gemini) Entegrasyonu
+        if gemini_model:
+            try:
+                system_prompt = "Sen SME-Flow AI KOBİ asistanısın. İşletme sahibi sana stok ve tedarik soruları soruyor. Çok kısa, net ve profesyonel Türkçe cevaplar ver. Şu anki stoklar: Zeytinyağı 15 Litre (Kritik), Kargo Bandı 8 Rulo (Kritik), Organik Bal 120 (Normal). Tedarikçiler: Öz Ege Tarım, Hızlı Ambalaj. Soru: "
+                response = gemini_model.generate_content(system_prompt + message)
+                return {"response": response.text, "tools_used": ["gemini_direct"], "steps": 1}
+            except Exception as e:
+                pass # API key hatası olursa aşağıdaki mock'a düşsün
+                
+        # Gemini API Key yoksa veya çökerse Akıllı Mock
         msg = message.lower()
         if "tedarikçi" in msg:
             return {"response": "Kayıtlı 2 ana tedarikçiniz var:\n1. **Öz Ege Tarım** (Gıda - Zeytinyağı)\n2. **Hızlı Ambalaj** (Malzeme)\nDetaylı iletişim bilgilerini sol menüdeki 'Tedarikçiler' sekmesinden görebilirsiniz.", "tools_used": ["get_suppliers"], "steps": 1}
