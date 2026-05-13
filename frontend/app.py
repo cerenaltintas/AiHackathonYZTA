@@ -344,6 +344,11 @@ def render_alerts():
                     label_visibility="collapsed",
                 )
                 st.caption("🤖 Bu mail taslağı Gemini AI tarafından otomatik oluşturulmuştur.")
+                
+                # Demo için şık bir Gönder Butonu eklendi
+                if st.button("📨 Onayla ve Tedarikçiye Gönder", key=f"send_btn_{i}"):
+                    st.success("✅ Mail tedarikçiye (siparis@ozege.com) başarıyla iletildi!")
+                    st.balloons()
 
 
 # ══════════════════════════════════════════════
