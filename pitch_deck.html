@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>SME-Flow AI — Pitch Deck</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+
+  .slide {
+    width: 297mm;
+    min-height: 210mm;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 14mm 18mm;
+  }
+
+  /* ── RENK PALETİ ── */
+  .bg-dark    { background: #0f172a; }
+  .bg-darker  { background: #070d1a; }
+  .bg-card    { background: rgba(30,41,59,0.85); border: 1px solid rgba(99,102,241,0.25); border-radius: 14px; }
+  .accent     { color: #818cf8; }
+  .accent2    { color: #34d399; }
+  .accent3    { color: #f59e0b; }
+  .muted      { color: #94a3b8; }
+
+  /* ── DEKOR ── */
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .glow-purple { background: #6366f1; }
+  .glow-green  { background: #34d399; }
+  .glow-blue   { background: #38bdf8; }
+
+  /* ── NUMARALAMA ── */
+  .slide-num {
+    position: absolute;
+    bottom: 8mm;
+    right: 18mm;
+    font-size: 10px;
+    color: #334155;
+    letter-spacing: 1px;
+  }
+  .logo-watermark {
+    position: absolute;
+    bottom: 8mm;
+    left: 18mm;
+    font-size: 10px;
+    color: #334155;
+    letter-spacing: 1px;
+  }
+
+  /* ── SLIDE 1: KAPAK ── */
+  #s1 {
+    background: radial-gradient(ellipse at 30% 50%, #1e1b4b 0%, #0f172a 60%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6mm;
+  }
+  #s1 .badge {
+    display: inline-block;
+    background: rgba(99,102,241,0.2);
+    border: 1px solid rgba(99,102,241,0.4);
+    color: #818cf8;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 4mm;
+  }
+  #s1 h1 {
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.05;
+    background: linear-gradient(135deg, #e2e8f0 30%, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  #s1 .tagline {
+    font-size: 18px;
+    color: #94a3b8;
+    font-weight: 300;
+    margin-top: 2mm;
+  }
+  #s1 .sub {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 8mm;
+    letter-spacing: 0.5px;
+  }
+  #s1 .divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #34d399);
+    border-radius: 2px;
+    margin: 4mm auto;
+  }
+
+  /* ── SLIDE HEADER ── */
+  .slide-header {
+    margin-bottom: 8mm;
+  }
+  .slide-header .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6366f1;
+    margin-bottom: 2mm;
+  }
+  .slide-header h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #e2e8f0;
+    line-height: 1.15;
+  }
+  .slide-header h2 span { color: #818cf8; }
+  .slide-header .desc {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-top: 2mm;
+    max-width: 160mm;
+  }
+  .h-rule {
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, transparent);
+    border-radius: 2px;
+    margin: 3mm 0 6mm;
+  }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; flex: 1; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; flex: 1; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 4mm; flex: 1; }
+
+  /* ── KART ── */
+  .card {
+    background: rgba(30,41,59,0.7);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 12px;
+    padding: 5mm 6mm;
+  }
+  .card.green  { border-color: rgba(52,211,153,0.3); }
+  .card.yellow { border-color: rgba(245,158,11,0.3); }
+  .card.red    { border-color: rgba(239,68,68,0.3); }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 2mm;
+  }
+  .card .icon { font-size: 22px; margin-bottom: 3mm; display: block; }
+  .card p {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* ── STAT ── */
+  .stat { text-align: center; padding: 5mm; }
+  .stat .val {
+    font-size: 36px;
+    font-weight: 900;
+    color: #818cf8;
+    line-height: 1;
+  }
+  .stat .lbl { font-size: 11px; color: #94a3b8; margin-top: 1mm; }
+
+  /* ── TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; gap: 3mm; flex: 1; }
+  .tl-item {
+    display: flex;
+    gap: 4mm;
+    align-items: flex-start;
+  }
+  .tl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+    flex-shrink: 0;
+    margin-top: 3px;
+    position: relative;
+  }
+  .tl-dot::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 4px;
+    width: 2px;
+    height: calc(100% + 15px);
+    background: rgba(99,102,241,0.25);
+  }
+  .tl-item:last-child .tl-dot::after { display: none; }
+  .tl-content h4 { font-size: 13px; font-weight: 700; color: #e2e8f0; }
+  .tl-content p  { font-size: 11px; color: #94a3b8; margin-top: 1px; }
+
+  /* ── TECH STACK ── */
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 6px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 2px;
+  }
+
+  /* ── QUOTE ── */
+  .quote {
+    border-left: 3px solid #6366f1;
+    padding-left: 5mm;
+    margin: 3mm 0;
+  }
+  .quote p { font-size: 14px; color: #cbd5e1; font-style: italic; line-height: 1.5; }
+  .quote span { font-size: 11px; color: #64748b; }
+
+  /* ── FLOW ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 4mm 0;
+  }
+  .flow-step {
+    background: rgba(99,102,241,0.15);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 8px;
+    padding: 3mm 4mm;
+    text-align: center;
+    flex: 1;
+    font-size: 11px;
+  }
+  .flow-step .fs-icon { font-size: 18px; display: block; margin-bottom: 1mm; }
+  .flow-step .fs-label { font-weight: 700; color: #e2e8f0; font-size: 11px; }
+  .flow-step .fs-sub   { color: #94a3b8; font-size: 10px; margin-top: 0.5mm; }
+  .arrow { color: #6366f1; font-size: 16px; flex-shrink: 0; }
+
+  /* ── TEAM ── */
+  .team-card {
+    background: rgba(30,41,59,0.7);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 12px;
+    padding: 6mm;
+    text-align: center;
+  }
+  .team-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #34d399);
+    margin: 0 auto 3mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+  }
+  .team-card h3 { font-size: 14px; font-weight: 700; }
+  .team-card .role { font-size: 11px; color: #818cf8; margin: 1mm 0 2mm; font-weight: 600; }
+  .team-card p { font-size: 11px; color: #94a3b8; line-height: 1.5; }
+
+  /* ── KAPANIŞ ── */
+  #s10 {
+    background: radial-gradient(ellipse at 70% 50%, #1e1b4b 0%, #0f172a 60%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5mm;
+  }
+  #s10 h2 {
+    font-size: 40px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #e2e8f0 30%, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  #s10 .cta {
+    font-size: 16px;
+    color: #94a3b8;
+    max-width: 160mm;
+    line-height: 1.6;
+  }
+  #s10 .links {
+    display: flex;
+    gap: 6mm;
+    justify-content: center;
+    margin-top: 4mm;
+  }
+  #s10 .link-item {
+    background: rgba(99,102,241,0.15);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 8px;
+    padding: 3mm 6mm;
+    font-size: 12px;
+    color: #a5b4fc;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #0f172a; }
+    .slide { page-break-after: always; page-break-inside: avoid; }
+    @page { size: A4 landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SAYFA 1 — KAPAK
+══════════════════════════════════════════ -->
+<div class="slide bg-darker" id="s1">
+  <div class="glow glow-purple" style="width:300px;height:300px;top:-80px;left:-60px"></div>
+  <div class="glow glow-green"  style="width:200px;height:200px;bottom:-40px;right:40px"></div>
+
+  <div class="badge">YZTA 5.0 AI Hackathon — 2026</div>
+  <h1>SME-Flow AI</h1>
+  <div class="divider"></div>
+  <p class="tagline">Otonom İşletme ve Stok Asistanı</p>
+  <p class="sub">
+    KOBİ'leri manuel süreçlerden kurtaran,<br>
+    yapay zeka destekli, uçtan uca çalışan işletme yönetim sistemi
+  </p>
+
+  <div style="display:flex;gap:6mm;justify-content:center;margin-top:8mm;flex-wrap:wrap">
+    <span class="tech-pill">⚡ FastAPI</span>
+    <span class="tech-pill">🧠 Gemini Flash</span>
+    <span class="tech-pill">🔍 ChromaDB RAG</span>
+    <span class="tech-pill">🤖 LangGraph Agent</span>
+    <span class="tech-pill">🎨 Streamlit</span>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">01 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 2 — PROBLEM
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="glow glow-purple" style="width:250px;height:250px;top:-60px;right:-40px;opacity:0.12"></div>
+
+  <div class="slide-header">
+    <div class="label">Problem</div>
+    <h2>KOBİ'ler operasyonel kaosta <span>boğuluyor</span></h2>
+    <div class="h-rule"></div>
+    <p class="desc">Türkiye'deki 3.7 milyon KOBİ'nin büyük çoğunluğu kritik iş süreçlerini hâlâ Excel veya manuel yöntemlerle yönetiyor.</p>
+  </div>
+
+  <div class="grid-3" style="flex:1;align-items:start">
+    <div class="card red">
+      <span class="icon">📉</span>
+      <h3>Stok Kayıpları</h3>
+      <p>Ürün bitmeden tedarikçiye ulaşılamıyor; ani stok kopukluğu müşteri kaybına ve ciro düşüşüne neden oluyor.</p>
+    </div>
+    <div class="card yellow">
+      <span class="icon">⏱️</span>
+      <h3>Zaman İsrafı</h3>
+      <p>Her sipariş maili manuel yazılıyor, rota planı tek tek düzenleniyor. Günde 2–4 saat yalnızca bu işlere gidiyor.</p>
+    </div>
+    <div class="card red">
+      <span class="icon">🔍</span>
+      <h3>Görünürlük Eksikliği</h3>
+      <p>Gerçek zamanlı stok durumu bilinmiyor; kritik eşik aşımları ancak müşteri şikayetiyle fark ediliyor.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:6mm;padding:4mm 5mm;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:10px">
+    <p style="font-size:12px;color:#94a3b8">
+      <strong style="color:#f87171">Araştırma Bulgusu:</strong>
+      KOBİ sahiplerinin <strong style="color:#fca5a5">%67'si</strong> stok yönetimini en büyük operasyonel sorun olarak tanımlıyor.
+      Kayıp zamanın yıllık maliyeti işletme başına ortalama <strong style="color:#fca5a5">₺80.000+</strong>.
+    </p>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">02 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 3 — ÇÖZÜM
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="glow glow-green" style="width:280px;height:280px;bottom:-60px;left:-40px;opacity:0.12"></div>
+
+  <div class="slide-header">
+    <div class="label">Çözüm</div>
+    <h2>Tanışın: <span>SME-Flow AI</span></h2>
+    <div class="h-rule"></div>
+    <p class="desc">Stokları izleyen, uyarı üreten, mail yazan ve rota planlayan — tamamen otonom KOBİ asistanı.</p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-step">
+      <span class="fs-icon">📦</span>
+      <div class="fs-label">Stok İzleme</div>
+      <div class="fs-sub">Gerçek zamanlı<br>eşik takibi</div>
+    </div>
+    <span class="arrow">→</span>
+    <div class="flow-step">
+      <span class="fs-icon">🚨</span>
+      <div class="fs-label">Otonom Algılama</div>
+      <div class="fs-sub">AI kritik ürünü<br>otomatik fark eder</div>
+    </div>
+    <span class="arrow">→</span>
+    <div class="flow-step">
+      <span class="fs-icon">✉️</span>
+      <div class="fs-label">Mail Taslağı</div>
+      <div class="fs-sub">Gemini ile<br>profesyonel sipariş</div>
+    </div>
+    <span class="arrow">→</span>
+    <div class="flow-step">
+      <span class="fs-icon">🗺️</span>
+      <div class="fs-label">Rota Planı</div>
+      <div class="fs-sub">Kurye rotası &amp;<br>paketleme listesi</div>
+    </div>
+    <span class="arrow">→</span>
+    <div class="flow-step">
+      <span class="fs-icon">🤖</span>
+      <div class="fs-label">AI Chat</div>
+      <div class="fs-sub">Doğal dilde<br>anlık yanıt</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:4mm">
+    <div class="quote">
+      <p>"Kritik stok var mı?" diye sorduğunuzda sistem hem yanıt verir hem tedarikçiye hazır mail üretir.</p>
+    </div>
+    <div class="quote">
+      <p>"Bugünkü kurye rotasını planla" dediğinizde 30 saniyede sıralı durak listesi ve paketleme listesi çıkar.</p>
+    </div>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">03 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 4 — ÜRÜN / ÖZELLİKLER
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="slide-header">
+    <div class="label">Ürün</div>
+    <h2>Tek ekranda <span>tam kontrol</span></h2>
+    <div class="h-rule"></div>
+    <p class="desc">5 modülden oluşan entegre dashboard — giriş yapan kullanıcı tüm işletme verisini gerçek zamanlı izler.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card green">
+      <span class="icon">📊</span>
+      <h3>Dashboard</h3>
+      <p>KPI metrikleri, kritik stok kartları, kategori dağılımı ve toplam envanter değeri tek bakışta.</p>
+    </div>
+    <div class="card">
+      <span class="icon">📦</span>
+      <h3>Envanter Yönetimi</h3>
+      <p>50 ürünlük filtrelenebilir, renkli durum kodlu liste. Stok güncelleme API'si ile anlık düzenleme.</p>
+    </div>
+    <div class="card red">
+      <span class="icon">🚨</span>
+      <h3>Otonom Uyarılar</h3>
+      <p>Kritik ürünler için Gemini destekli otomatik sipariş maili taslağı — tedarikçi bilgisiyle birlikte.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🏭</span>
+      <h3>Tedarikçi Yönetimi</h3>
+      <p>Tedarikçi profilleri, iletişim bilgileri ve ürün kategorileri organize panel görünümü.</p>
+    </div>
+    <div class="card green">
+      <span class="icon">🤖</span>
+      <h3>AI Asistan Chat</h3>
+      <p>RAG destekli sohbet — stok, sipariş ve satış trendleri hakkında doğal dilde anlık soru-cevap.</p>
+    </div>
+    <div class="card yellow">
+      <span class="icon">🔐</span>
+      <h3>Güvenli Erişim</h3>
+      <p>JWT tabanlı kimlik doğrulama, tüm endpoint'lerde token koruması ve Pydantic input validasyonu.</p>
+    </div>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">04 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 5 — TEKNİK MİMARİ
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="glow glow-blue" style="width:260px;height:260px;top:-40px;right:-60px;opacity:0.10"></div>
+
+  <div class="slide-header">
+    <div class="label">Teknik Mimari</div>
+    <h2>Modern, <span>ölçeklenebilir</span> altyapı</h2>
+    <div class="h-rule"></div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card" style="margin-bottom:4mm">
+        <h3 style="color:#818cf8;margin-bottom:3mm">🔧 Backend Katmanı</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:2px;margin-bottom:3mm">
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">Pydantic v2</span>
+          <span class="tech-pill">JWT Auth</span>
+          <span class="tech-pill">Uvicorn</span>
+        </div>
+        <p style="font-size:11px;color:#94a3b8">Asenkron, modüler router yapısı. Stok, sipariş, tedarikçi ve AI endpoint'leri ayrı modüllerde. Tüm veri giriş noktalarında tip ve uzunluk validasyonu.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:#34d399;margin-bottom:3mm">🎨 Frontend Katmanı</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:2px;margin-bottom:3mm">
+          <span class="tech-pill">Streamlit</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">httpx</span>
+        </div>
+        <p style="font-size:11px;color:#94a3b8">FastAPI'ye bağlanan reaktif dashboard. Tüm sayfa geçişleri session state ile yönetilir. Token tabanlı güvenli API istemcisi.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:4mm">
+        <h3 style="color:#f59e0b;margin-bottom:3mm">🧠 AI / RAG Katmanı</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:2px;margin-bottom:3mm">
+          <span class="tech-pill">Gemini Flash</span>
+          <span class="tech-pill">LangGraph</span>
+          <span class="tech-pill">ChromaDB</span>
+          <span class="tech-pill">LangChain</span>
+        </div>
+        <p style="font-size:11px;color:#94a3b8">
+          <strong style="color:#fcd34d">RAG:</strong> JSON stok verileri ChromaDB vektör DB'ye embed edilir. Sorgu gelince anlamsal arama yapılır, LLM halüsinasyon görmeden yanıt üretir.<br><br>
+          <strong style="color:#fcd34d">Agent:</strong> LangGraph ReAct agent — 8 tool arasında otonom seçim yapar.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color:#38bdf8;margin-bottom:3mm">🔄 Veri Akışı</h3>
+        <p style="font-size:11px;color:#94a3b8;line-height:1.7">
+          JSON → ChromaDB Embed → Vektör Arama<br>
+          Kullanıcı Sorusu → Agent → Tool Seç → RAG → Yanıt<br>
+          Kritik Stok → Gemini → Mail Taslağı → Onay
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">05 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 6 — DEMO / EKRAN GÖRÜNTÜLERİ
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="slide-header">
+    <div class="label">Demo</div>
+    <h2>Sistemin <span>çalışması</span></h2>
+    <div class="h-rule"></div>
+    <p class="desc">Uçtan uca senaryo — bir KOBİ sahibinin sabah rutini SME-Flow AI ile nasıl değişiyor?</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot" style="background:#6366f1"></div>
+      <div class="tl-content">
+        <h4>Adım 1 — Giriş &amp; Dashboard</h4>
+        <p>admin/admin123 ile giriş. Anlık stok metrikleri: 50 ürün, 4 kritik, toplam ₺97.580 stok değeri görünür.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:#f59e0b"></div>
+      <div class="tl-content">
+        <h4>Adım 2 — Otonom Stok Uyarısı</h4>
+        <p>"Uyarıları Tara" butonuna basılır. AI tüm stoku tarar; kritik ürünler için tedarikçi bilgisi + sipariş maili hazır gelir.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:#34d399"></div>
+      <div class="tl-content">
+        <h4>Adım 3 — AI Chat ile Anlık Soru</h4>
+        <p>"En az stoğu olan 3 ürünü listele" sorusu sorulur. Agent ChromaDB'den anlam bazlı arama yapar, halüsinasyonsuz sonuç üretir.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:#38bdf8"></div>
+      <div class="tl-content">
+        <h4>Adım 4 — Rota Planlama</h4>
+        <p>"Bugünkü kurye rotasını planla" komutuyla AI semt yakınlığına göre sıralı rota + depo paketleme listesi oluşturur.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:#a78bfa"></div>
+      <div class="tl-content">
+        <h4>Adım 5 — Satış Trendi Analizi</h4>
+        <p>3 aylık satış geçmişinden trend analizi, en çok satanlar ve gelecek hafta stok öngörüsü otomatik hesaplanır.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">06 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 7 — HEDEF KİTLE & PAZAR
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="glow glow-purple" style="width:220px;height:220px;bottom:-50px;right:-30px;opacity:0.12"></div>
+
+  <div class="slide-header">
+    <div class="label">Pazar</div>
+    <h2>3.7 milyon KOBİ — <span>dijitalleşmeyi bekliyor</span></h2>
+    <div class="h-rule"></div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm">
+        <div class="stat card">
+          <div class="val">3.7M</div>
+          <div class="lbl">Türkiye KOBİ Sayısı</div>
+        </div>
+        <div class="stat card">
+          <div class="val">%98</div>
+          <div class="lbl">Tüm İşletmelerin Oranı</div>
+        </div>
+        <div class="stat card">
+          <div class="val">%67</div>
+          <div class="lbl">Stok Sorunu Yaşayanlar</div>
+        </div>
+        <div class="stat card">
+          <div class="val">$2.4B</div>
+          <div class="lbl">TR SaaS Pazar Büyüklüğü</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:4mm">
+        <h3>🎯 Birincil Hedef Segment</h3>
+        <p style="font-size:11px;color:#94a3b8;line-height:1.7;margin-top:2mm">
+          • <strong style="color:#e2e8f0">E-ticaret KOBİ'leri:</strong> 20-200 ürün yöneten online mağazalar<br>
+          • <strong style="color:#e2e8f0">Gıda &amp; Tarım Kooperatifleri:</strong> Mevsimsel stok dalgalanması yaşayanlar<br>
+          • <strong style="color:#e2e8f0">Butik İşletmeler:</strong> Tek çalışanın tüm operasyonu yönettiği firmalar
+        </p>
+      </div>
+      <div class="card green">
+        <h3>💡 Neden Şimdi?</h3>
+        <p style="font-size:11px;color:#94a3b8;line-height:1.7;margin-top:2mm">
+          Gemini API'nin ücretsiz katmanı, LangGraph ve ChromaDB'nin olgunlaşması ile artık kurumsal kalitede AI araçları KOBİ bütçesiyle mümkün. Büyük ERP'lerin $500+/ay maliyetine karşı SME-Flow modeli demokratik erişim sunuyor.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">07 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 8 — DEĞER ÖNERİSİ & ETKİ
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="slide-header">
+    <div class="label">Değer Önerisi</div>
+    <h2>Ölçülebilir <span>iş etkisi</span></h2>
+    <div class="h-rule"></div>
+    <p class="desc">SME-Flow AI'nin bir KOBİ'ye katacağı somut fayda:</p>
+  </div>
+
+  <div class="grid-4" style="align-items:start">
+    <div class="card green" style="text-align:center">
+      <div class="stat">
+        <div class="val" style="color:#34d399">-80%</div>
+        <div class="lbl">Manuel stok kontrol süresi</div>
+      </div>
+      <p style="font-size:11px;color:#94a3b8;margin-top:3mm">Günlük 2 saat yerine 15 dakikada tam kontrol</p>
+    </div>
+    <div class="card yellow" style="text-align:center">
+      <div class="stat">
+        <div class="val" style="color:#f59e0b">0</div>
+        <div class="lbl">Stok kopukluğu riski</div>
+      </div>
+      <p style="font-size:11px;color:#94a3b8;margin-top:3mm">Eşik aşılmadan önce otonom uyarı ve sipariş taslağı</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="stat">
+        <div class="val">3x</div>
+        <div class="lbl">Sipariş hızı</div>
+      </div>
+      <p style="font-size:11px;color:#94a3b8;margin-top:3mm">Hazır mail taslağı ile 1 tık onay, 0 dakika yazma</p>
+    </div>
+    <div class="card green" style="text-align:center">
+      <div class="stat">
+        <div class="val" style="color:#34d399">7/24</div>
+        <div class="lbl">Otonom izleme</div>
+      </div>
+      <p style="font-size:11px;color:#94a3b8;margin-top:3mm">Hafta sonu, gece — sistem hiç uyumadan çalışır</p>
+    </div>
+  </div>
+
+  <div style="margin-top:5mm;padding:4mm 5mm;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:10px">
+    <p style="font-size:12px;color:#94a3b8;text-align:center">
+      <strong style="color:#34d399">Rekabet Avantajı:</strong>
+      Piyasadaki ERP sistemleri reaktif (sorun çıkınca müdahale) iken SME-Flow <strong style="color:#6ee7b7">proaktif</strong> (sorun çıkmadan önce aksiyon). Bu fark kurumsal mı değil, sadece akıllı.
+    </p>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">08 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 9 — EKİP
+══════════════════════════════════════════ -->
+<div class="slide bg-dark">
+  <div class="slide-header">
+    <div class="label">Ekip</div>
+    <h2>Güçlü temeller, <span>tamamlayıcı yetkinlikler</span></h2>
+    <div class="h-rule"></div>
+    <p class="desc">Her üye projenin farklı bir kritik katmanından sorumlu — backend, yapay zeka ve kullanıcı deneyimi.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="team-card">
+      <div class="team-avatar">DK</div>
+      <h3>Damla Kundak</h3>
+      <div class="role">Backend &amp; Security Lead</div>
+      <p>FastAPI mimarisi, JWT kimlik doğrulama, Pydantic veri modelleri ve tüm REST API uç noktaları. Sistemin güvenli ve hızlı çalışmasından sorumlu.</p>
+      <div style="margin-top:3mm;display:flex;gap:2px;justify-content:center;flex-wrap:wrap">
+        <span class="tech-pill">FastAPI</span>
+        <span class="tech-pill">JWT</span>
+        <span class="tech-pill">Pydantic</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#059669,#0891b2)">SB</div>
+      <h3>Semih Bekdaş</h3>
+      <div class="role">AI &amp; Data Engineer</div>
+      <p>Gemini entegrasyonu, RAG boru hattı, ChromaDB vektör veritabanı ve LangGraph ajan mimarisi. Sistemin "beyin" katmanı tamamen Semih'in eseri.</p>
+      <div style="margin-top:3mm;display:flex;gap:2px;justify-content:center;flex-wrap:wrap">
+        <span class="tech-pill">Gemini</span>
+        <span class="tech-pill">LangGraph</span>
+        <span class="tech-pill">ChromaDB</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#d97706,#dc2626)">CA</div>
+      <h3>Ceren Altıntaş</h3>
+      <div class="role">Frontend &amp; UI/UX Lead</div>
+      <p>Streamlit dashboard tasarımı, kullanıcı deneyimi akışı, API istemcisi entegrasyonu ve tüm görsel bileşenler. Sistemin "yüzü" Ceren'in elinden çıktı.</p>
+      <div style="margin-top:3mm;display:flex;gap:2px;justify-content:center;flex-wrap:wrap">
+        <span class="tech-pill">Streamlit</span>
+        <span class="tech-pill">UX</span>
+        <span class="tech-pill">Design</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:5mm;padding:3mm 5mm;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:10px;text-align:center">
+    <p style="font-size:12px;color:#94a3b8">
+      5 günlük sprint planıyla sıfırdan uçtan uca çalışan prototip —
+      <strong style="color:#a5b4fc">tamamen asenkron, modüler geliştirme süreci</strong>
+    </p>
+  </div>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">09 / 10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SAYFA 10 — KAPANIŞ
+══════════════════════════════════════════ -->
+<div class="slide bg-darker" id="s10">
+  <div class="glow glow-purple" style="width:350px;height:350px;top:-100px;right:-80px"></div>
+  <div class="glow glow-green"  style="width:200px;height:200px;bottom:-60px;left:20px"></div>
+
+  <div style="font-size:40px;margin-bottom:2mm">🤖</div>
+  <h2>SME-Flow AI</h2>
+  <div class="divider" style="margin:3mm auto"></div>
+  <p class="cta">
+    Küçük işletmeler büyük sistemleri hak ediyor.<br>
+    <strong style="color:#a5b4fc">Yapay zeka artık sadece kurumsal değil — herkes için.</strong>
+  </p>
+
+  <div class="links">
+    <div class="link-item">🔗 GitHub: github.com/[repo]</div>
+    <div class="link-item">📺 Demo Video: youtube.com/[link]</div>
+    <div class="link-item">📧 sme-flow@yzta.dev</div>
+  </div>
+
+  <div style="margin-top:6mm;display:flex;gap:4mm;justify-content:center;flex-wrap:wrap">
+    <span class="tech-pill">⚡ FastAPI</span>
+    <span class="tech-pill">🧠 Gemini Flash</span>
+    <span class="tech-pill">🔍 ChromaDB RAG</span>
+    <span class="tech-pill">🤖 LangGraph Agent</span>
+    <span class="tech-pill">🎨 Streamlit</span>
+    <span class="tech-pill">🔐 JWT Auth</span>
+  </div>
+
+  <p style="margin-top:8mm;font-size:11px;color:#334155">YZTA 5.0 AI Hackathon — Mayıs 2026</p>
+
+  <div class="logo-watermark">SME-Flow AI</div>
+  <div class="slide-num">10 / 10</div>
+</div>
+
+</body>
+</html>

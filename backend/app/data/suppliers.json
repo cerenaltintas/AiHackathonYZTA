@@ -1,0 +1,38 @@
+[
+  {
+    "id": "S001",
+    "name": "Mehmet Yılmaz",
+    "company": "Ege Zeytincilik A.Ş.",
+    "email": "mehmet@egezeytincilik.com",
+    "phone": "0232 555 01 01",
+    "product_categories": ["Zeytinyağı ve Zeytin"],
+    "notes": "Hafta içi 08:00-17:00 ulaşılabilir. Minimum sipariş 50 adet."
+  },
+  {
+    "id": "S002",
+    "name": "Ayşe Kaya",
+    "company": "Anadolu Organik Ltd.",
+    "email": "ayse@anadoluorganik.com",
+    "phone": "0312 444 02 02",
+    "product_categories": ["Reçel ve Marmelat", "Baharat ve Otlar", "Kuruyemiş"],
+    "notes": "Toplu siparişlerde %10 indirim yapıyor. Kargo ücretsiz 200 adet üzeri."
+  },
+  {
+    "id": "S003",
+    "name": "Hasan Demir",
+    "company": "Karadeniz Doğal Arıcılık",
+    "email": "hasan@karadenizaricik.com",
+    "phone": "0462 333 03 03",
+    "product_categories": ["Bal ve Arı Ürünleri"],
+    "notes": "Sezonluk stok. Kasım-Şubat arası Petek Balı temin edilemiyor."
+  },
+  {
+    "id": "S004",
+    "name": "Fatma Şahin",
+    "company": "Akdeniz Gıda Kooperatifi",
+    "email": "fatma@akdenizgida.com",
+    "phone": "0242 222 04 04",
+    "product_categories": ["Makarna ve Tahıllar", "Konserve ve Turşu"],
+    "notes": "Kooperatif üretimi, organik sertifikalı. Teslimat 3-5 iş günü."
+  }
+]

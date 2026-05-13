@@ -1,0 +1,29 @@
+[
+  {
+    "month": "Şubat 2026",
+    "total_sales": 15400.0,
+    "top_products": [
+      {"product_id": "P001", "name": "Organik Sızma Zeytinyağı 500ml", "sold_quantity": 120},
+      {"product_id": "P011", "name": "Çiçek Balı 1kg", "sold_quantity": 85},
+      {"product_id": "P027", "name": "Kırmızı Pul Biber 100g", "sold_quantity": 200}
+    ]
+  },
+  {
+    "month": "Mart 2026",
+    "total_sales": 18200.0,
+    "top_products": [
+      {"product_id": "P001", "name": "Organik Sızma Zeytinyağı 500ml", "sold_quantity": 140},
+      {"product_id": "P048", "name": "Domates Salçası 720ml", "sold_quantity": 110},
+      {"product_id": "P012", "name": "Kestane Balı 1kg", "sold_quantity": 60}
+    ]
+  },
+  {
+    "month": "Nisan 2026",
+    "total_sales": 21500.0,
+    "top_products": [
+      {"product_id": "P001", "name": "Organik Sızma Zeytinyağı 500ml", "sold_quantity": 180},
+      {"product_id": "P020", "name": "Kayısı Marmelatı 370g", "sold_quantity": 90},
+      {"product_id": "P011", "name": "Çiçek Balı 1kg", "sold_quantity": 95}
+    ]
+  }
+]

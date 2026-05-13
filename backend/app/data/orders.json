@@ -1,0 +1,54 @@
+[
+  {
+    "order_id": "ORD-1001",
+    "customer_name": "Ahmet Yılmaz",
+    "items": [
+      {"product_id": "P001", "name": "Organik Sızma Zeytinyağı 500ml", "quantity": 2}
+    ],
+    "status": "Hazırlanıyor",
+    "delivery_address": "Kadıköy, İstanbul",
+    "order_date": "2026-05-10T09:00:00"
+  },
+  {
+    "order_id": "ORD-1002",
+    "customer_name": "Ayşe Demir",
+    "items": [
+      {"product_id": "P011", "name": "Çiçek Balı 1kg", "quantity": 1},
+      {"product_id": "P037", "name": "İç Fındık 500g", "quantity": 3}
+    ],
+    "status": "Kargoya Verildi",
+    "delivery_address": "Beşiktaş, İstanbul",
+    "order_date": "2026-05-09T14:30:00"
+  },
+  {
+    "order_id": "ORD-1003",
+    "customer_name": "Canan Kaya",
+    "items": [
+      {"product_id": "P048", "name": "Domates Salçası 720ml", "quantity": 5}
+    ],
+    "status": "Hazırlanıyor",
+    "delivery_address": "Üsküdar, İstanbul",
+    "order_date": "2026-05-10T10:15:00"
+  },
+  {
+    "order_id": "ORD-1004",
+    "customer_name": "Burak Şahin",
+    "items": [
+      {"product_id": "P006", "name": "Siyah Zeytin Salamura 1kg", "quantity": 1}
+    ],
+    "status": "Beklemede",
+    "delivery_address": "Maltepe, İstanbul",
+    "order_date": "2026-05-10T11:45:00"
+  },
+  {
+    "order_id": "ORD-1005",
+    "customer_name": "Elif Çelik",
+    "items": [
+      {"product_id": "P020", "name": "Kayısı Marmelatı 370g", "quantity": 2},
+      {"product_id": "P027", "name": "Kırmızı Pul Biber 100g", "quantity": 1}
+    ],
+    "status": "Hazırlanıyor",
+    "delivery_address": "Ataşehir, İstanbul",
+    "order_date": "2026-05-10T12:30:00"
+  }
+]
