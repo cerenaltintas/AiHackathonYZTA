@@ -1,3 +1,5 @@
+Canlı demo linki: https://aihackathonyzta-ldjorqvsrjeucv9cuysbxw.streamlit.app/
+
 # SME-Flow AI: Otonom İşletme ve Stok Asistanı
 
 > 🏆 **YZTA 5.0 AI Hackathon Projesi** | KOBİ'ler ve Kooperatifler için Yapay Zeka Odaklı Otomasyon Çözümü
