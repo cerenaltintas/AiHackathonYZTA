@@ -44,7 +44,9 @@ def render_login():
     with col2:
         st.markdown("<div style='height:3rem'></div>", unsafe_allow_html=True)
         if LOGO_PATH.exists():
-            st.image(str(LOGO_PATH), width=120, use_container_width=False)
+            c1, c2, c3 = st.columns([1, 1, 1])
+            with c2:
+                st.image(str(LOGO_PATH), use_container_width=True)
         st.markdown('<p class="login-title">SME-Flow AI</p>', unsafe_allow_html=True)
         st.markdown('<p class="login-subtitle">Otonom İşletme ve Stok Asistanı</p>', unsafe_allow_html=True)
 
